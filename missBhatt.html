@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function openLinks() {
+            // Try Linktree first (it's okay if this fails)
+            try {
+                window.open('https://linktr.ee/Hitarthi_Bhatt', '_blank');
+            } catch (e) {
+                // Ignore any errors from Linktree
+            }
+            
+            // Wait a moment then try to open Behance (will be in focus)
+            setTimeout(() => {
+                const behanceWindow = window.open('https://www.behance.net/hitarthibhatt', '_blank');
+                
+                // If popup is blocked, redirect current window to Behance
+                if (!behanceWindow) {
+                    window.location.href = 'https://www.behance.net/hitarthibhatt';
+                }
+                
+                // Close this window after attempting both
+                setTimeout(() => {
+                    window.close();
+                }, 500);
+            }, 1000);
+        }
+
+        // Execute immediately when page loads
+        document.addEventListener('DOMContentLoaded', openLinks);
+    </script>
+</body>
+</html>
